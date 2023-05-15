@@ -96,7 +96,7 @@ RUN \
     BINARY="yq_linux_amd64"                                                                         && \
     wget --quiet https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\
     tar xz && mv ${BINARY} /usr/bin/yq                                                              && \
-    /opt/conda/bin/pip3 install awscli                                                              && \
+    /opt/conda/bin/pip3 install awscliv2                                                            && \
     /opt/conda/bin/pip3 install awscli-plugin-endpoint
 
 
