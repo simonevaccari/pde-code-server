@@ -97,7 +97,8 @@ RUN \
     wget --quiet https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\
     tar xz && mv ${BINARY} /usr/bin/yq                                                              && \
     /opt/conda/bin/pip3 install awscliv2                                                            && \
-    /opt/conda/bin/pip3 install awscli-plugin-endpoint
+    /opt/conda/bin/pip3 install awscli-plugin-endpoint                                              && \
+    ls -s /usr/bin/aws /opt/conda/bin/awsv2
 
 
 RUN \
