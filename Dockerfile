@@ -98,6 +98,7 @@ RUN \
     tar xz && mv ${BINARY} /usr/bin/yq                                                              && \
     /opt/conda/bin/pip3 install awscliv2                                                            && \
     /opt/conda/bin/pip3 install awscli-plugin-endpoint                                              && \
+    /opt/conda/bin/awsv2 --install                                                                  && \
     ln -s /opt/conda/bin/awsv2 /usr/bin/aws
 
 
