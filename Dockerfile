@@ -5,7 +5,8 @@ RUN \
     apt-get install -y \
     build-essential \
     curl \
-    gcc
+    gcc \
+    vim
 
 RUN \
     echo "**** install node repo ****" && \
@@ -87,7 +88,7 @@ RUN \
 
 
 RUN \
-    mamba install -n base cwltool cwl-wrapper nodejs && \
+    mamba install -n base cwltool cwl-wrapper==0.12.2 nodejs && \
     mamba clean -a
 
 RUN \
