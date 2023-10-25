@@ -6,7 +6,9 @@ RUN \
     build-essential \
     curl \
     gcc \
-    vim
+    vim \
+    tree \
+    file
 
 RUN \
     echo "**** install node repo ****" && \
@@ -75,7 +77,7 @@ ENV USER=jovyan \
 
 RUN \
     echo "**** install conda ****" && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Linux-x86_64.sh -O miniconda.sh -q && \
+    wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh -O miniconda.sh -q && \
     sh miniconda.sh -b -p /opt/conda && \
     conda install -n base -c conda-forge mamba && \
     conda config --system --append channels conda-forge && \
