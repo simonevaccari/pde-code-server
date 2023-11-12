@@ -63,11 +63,6 @@ RUN \
         /var/tmp/* \
         /etc/apt/sources.list.d/nodesource.list
 
-RUN \
-    /app/code-server/bin/code-server --install-extension ms-python.python        && \
-    /app/code-server/bin/code-server --install-extension redhat.vscode-yaml      && \
-    /app/code-server/bin/code-server --install-extension sbg-rabix.benten-cwl
-
 ENV USER=jovyan \
     UID=1001 \
     GID=100 \
