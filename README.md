@@ -1,4 +1,6 @@
-# Code Server Docker Image
+# Processor Development Environment (PDE) Container image
+
+The Processor Development Environment provides a rich, interactive environment in which processing algorithms and services are developed, tested, debugged and ultimately packaged so that they can be deployed to the platform and published via the marketplace.
 
 This repository contains a Dockerfile to build a container that exposes [Code Server](https://github.com/cdr/code-server) within a the ApplicationHub.
 
