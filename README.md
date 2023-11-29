@@ -9,12 +9,12 @@ This repository contains a Dockerfile to build a container that exposes [Code Se
 ### Prerequisites
 
 - [Docker](https://www.docker.com/) installed on your machine.
-- [JupyterHub](https://jupyterhub.readthedocs.io/) installed and configured.
+- [ApplicationHub](https://eoepca.github.io/application-hub-context/) installed and configured.
 
 ### Building the Docker Image
 
 To build the Docker image, run the following command:
 
 ```bash
-docker build -t jupyterhub-code-server .
+docker build -t eoepca/pde-code-server .
 ```
