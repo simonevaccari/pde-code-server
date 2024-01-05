@@ -63,11 +63,6 @@ RUN \
         /var/tmp/* \
         /etc/apt/sources.list.d/nodesource.list
 
-RUN \
-    /app/code-server/bin/code-server --install-extension ms-python.python        && \
-    /app/code-server/bin/code-server --install-extension redhat.vscode-yaml      && \
-    /app/code-server/bin/code-server --install-extension sbg-rabix.benten-cwl
-
 ENV USER=jovyan \
     UID=1001 \
     GID=100 \
@@ -104,7 +99,10 @@ RUN \
 
 RUN \
     echo "**** install jupyter-hub native proxy ****" && \
-    /opt/conda/bin/pip3 install jhsingle-native-proxy>=0.0.9 
+    /opt/conda/bin/pip3 install jhsingle-native-proxy>=0.0.9 && \
+    echo "**** install bash kernel ****" && \
+    /opt/conda/bin/pip3 install bash_kernel && \
+    /opt/conda/bin/python3 -m bash_kernel.install
 
 RUN \
     echo "**** adds user jovyan ****" && \
