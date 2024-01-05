@@ -30,4 +30,8 @@ destport=$((port + 1))
 
 echo "Using internal port $destport"
 
-jhsingle-native-proxy --port $port --destport $destport code-server {--}auth none {--}bind-addr 0.0.0.0:$destport {--}user-data-dir /workspace /workspace
+if [ -z "$CODE_SERVER_WS" ]; then
+    CODE_SERVER_WS="/workspace"
+fi
+
+jhsingle-native-proxy --port $port --destport $destport code-server {--}auth none {--}bind-addr 0.0.0.0:$destport {--}user-data-dir /workspace $CODE_SERVER_WS
