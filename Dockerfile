@@ -8,7 +8,8 @@ RUN \
     gcc \
     vim \
     tree \
-    file
+    file \
+    tzdata
 
 RUN \
     echo "**** install node repo ****" && \
