@@ -1,14 +1,22 @@
-FROM docker.io/ubuntu:22.04
+FROM docker.io/ubuntu:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN \
     apt-get update && \
+    ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
+    echo "Etc/UTC" > /etc/timezone && \
     apt-get install -y \
     build-essential \
     curl \
     gcc \
     vim \
     tree \
-    file
+    file \
+    tzdata && \
+    dpkg-reconfigure -f noninteractive tzdata
+
+    
 
 RUN \
     echo "**** install node repo ****" && \
@@ -72,8 +80,9 @@ ENV USER=jovyan \
 
 RUN \
     echo "**** install conda ****" && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh -O miniconda.sh -q && \
+    wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh -O miniconda.sh -q && \
     sh miniconda.sh -b -p /opt/conda && \
+    export PATH="/opt/conda/bin:$PATH" && \
     conda install -n base -c conda-forge mamba && \
     conda config --system --append channels conda-forge && \
     conda config --system --append channels terradue && \
