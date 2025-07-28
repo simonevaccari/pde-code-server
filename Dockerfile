@@ -77,11 +77,24 @@ ENV USER=jovyan \
     HOME=/workspace \
     PATH=/opt/conda/bin:/app/code-server/bin/:$PATH:/app/code-server/
 
+# Determine platform at build time
+ARG TARGETARCH
+ENV TARGETARCH=${TARGETARCH}
 
-RUN \
+# Define Miniconda version (for easy reuse)
+ENV MINICONDA_VERSION=py310_23.3.1-0
+
+# Set architecture-specific installer URL
+RUN set -e && \
     echo "**** install conda ****" && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh -O miniconda.sh -q && \
+    if [ "$TARGETARCH" = "arm64" ]; then \
+        MINICONDA_ARCH=aarch64; \
+    else \
+        MINICONDA_ARCH=x86_64; \
+    fi && \
+    wget -q https://repo.anaconda.com/miniconda/Miniconda3-${MINICONDA_VERSION}-Linux-${MINICONDA_ARCH}.sh -O miniconda.sh && \
     sh miniconda.sh -b -p /opt/conda && \
+    rm miniconda.sh && \
     export PATH="/opt/conda/bin:$PATH" && \
     conda install -n base -c conda-forge mamba && \
     conda config --system --append channels conda-forge && \
